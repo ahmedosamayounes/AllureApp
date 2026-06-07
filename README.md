@@ -61,9 +61,17 @@ This app leverages modern industry-standard libraries to achieve state-of-the-ar
 
 ---
 
-### 📸 Screenshots & UI Tour
-> 💡 **Developer Note:** Place your screenshots in the placeholder table below to showcase your high-fidelity user interface.
+## 📸 Screenshots & UI Tour
 
-| Authentication | Home & Catalog | Checkout & Checkout Logic |
-| :---: | :---: | :---: |
+### 🔐 Part 1: Authentication & Browsing
+| Signup Screen | Signup Success | Login Screen | Google Sign-In |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/fcd42db4-8f8f-49ba-91ab-3ba879243984" width="200"/> | <img src="https://github.com/user-attachments/assets/388d4a75-12eb-4ee8-9b0d-dd6b123ac9ad" width="200"/> | <img src="https://github.com/user-attachments/assets/e33e137c-06c3-4dd0-8d37-97083a2fe860" width="200"/> | <img src="https://github.com/user-attachments/assets/eab7ebbd-4d39-4614-b0c6-c8727fc79d14" width="200"/> |
+| Home / Products | Navigation Drawer | Checkout Summary | Place Order Summary |
+| <img src="https://github.com/user-attachments/assets/5c3bd365-b426-4bc2-8319-791621bd9fed" width="200"/> | <img src="https://github.com/user-attachments/assets/2d0c6393-8eff-431f-a9f1-ad9df81fcfff" width="200"/> | <img src="https://github.com/user-attachments/assets/e975e03d-7e9c-42a0-b26a-618aabb6480f" width="200"/> | <img src="https://github.com/user-attachments/assets/f86148b3-f1c9-4c7b-aee4-fa525ce61e90" width="200"/> |
+
+### 💳 Part 2: Order Placement & Checkout Flow
+| Add Shipping Address | Credit Card Payment | Order Placement Details | Order Placed Successfully |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/18d49424-edf8-43af-8902-ed6e61cef280" width="200"/> | <img src="https://github.com/user-attachments/assets/5d4c9299-81e5-4fb1-8ff8-d81fa96cf403" width="200"/> | <img src="https://github.com/user-attachments/assets/6b6504ad-1da5-4567-842e-63746c1d7db3" width="200"/> | <img src="https://github.com/user-attachments/assets/860a8817-6435-4cc9-be65-77fe1c14144c" width="200"/> |
 | <img src="YOUR_SCREENSHOT_LINK_HERE" width="220"/> <br> *Login & Signup Screens* | <img src="YOUR_SCREENSHOT_LINK_HERE" width="220"/> <br> *Dynamic Product Feed* | <img src="YOUR_SCREENSHOT_LINK_HERE" width="220"/> <br> *Address & Payment Management* |
