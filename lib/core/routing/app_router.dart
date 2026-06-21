@@ -20,7 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
-    
+    //s
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
