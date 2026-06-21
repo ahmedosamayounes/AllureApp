@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/core/di/dependency_injection.dart';
+import 'features/stripe_payment/stripe_keys.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -9,6 +12,10 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  setupGetIt();
+  Stripe.publishableKey = ApiKeys.publishableKey;
+  await Stripe.instance.applySettings();
+
   runApp(const MyApp());
 }
 

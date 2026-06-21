@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'checkout_state.dart';
 part 'checkout_cubit.freezed.dart';
-
 class CheckoutCubit extends Cubit<CheckoutState> {
   CheckoutCubit() : super(const CheckoutState.initial());
 

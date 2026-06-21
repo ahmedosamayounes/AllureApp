@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
+
 import '../../../core/shared/app_bar.dart';
 import '../../../core/shared/app_button.dart';
-import '../../../core/shared/app_success_dialog.dart';
 import '../../../core/shared/app_header_text.dart';
+import '../../../core/shared/app_success_dialog.dart';
 import '../../../core/shared/app_text_info.dart';
 import '../../../core/theming/colors.dart';
+import '../../checkout/logic/cubit/checkout_cubit.dart';
+import '../../home/data/models/product_model.dart';
 import 'widgets/add_address_button.dart';
 import 'widgets/address_details_card.dart';
 import 'widgets/order_review_card.dart';
 import 'widgets/payment_details_cart.dart';
 import 'widgets/select_payment_button.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import '../../checkout/logic/cubit/checkout_cubit.dart';
-import '../../home/data/models/product_model.dart';
 
 class PlaceOrder extends StatefulWidget {
   final ProductModel product;

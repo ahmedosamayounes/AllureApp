@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/theming/colors.dart';
-import 'package:flutter_application/features/home/ui/widgets/local_data.dart';
+import '../../../../core/theming/colors.dart';
+import 'local_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 

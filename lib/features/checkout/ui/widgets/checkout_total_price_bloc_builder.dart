@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/total_price_section.dart';
+
 import '../../logic/cubit/checkout_cubit.dart';
+import '../widgets/total_price_section.dart';
 
 class CheckoutTotalPriceBlocBuilder extends StatelessWidget {
   final int basePrice;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/theming/colors.dart';
 
 class TotalPriceSection extends StatelessWidget {
   const TotalPriceSection({super.key, required this.totalPrice});

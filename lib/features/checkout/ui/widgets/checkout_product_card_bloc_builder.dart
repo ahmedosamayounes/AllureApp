@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/shared/app_product_card.dart';
 import '../../../home/data/models/product_model.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../logic/cubit/checkout_cubit.dart';
 
 class CheckoutProductCardBlocBuilder extends StatelessWidget {

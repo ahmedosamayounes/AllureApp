@@ -34,7 +34,8 @@ class Home extends StatelessWidget {
               ),
               error: (message) => Center(
                 child: Text(
-                  'Database Error: $message',
+                  'Database Error: $message',   
+                  
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: Colors.red,

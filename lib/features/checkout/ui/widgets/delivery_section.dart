@@ -11,7 +11,7 @@ class DeliverySection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
-        color: Colors.white, // كارت أبيض نظيف
+        color: Colors.white, 
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: const Color(0xFFEFEFEF), width: 1),
       ),
