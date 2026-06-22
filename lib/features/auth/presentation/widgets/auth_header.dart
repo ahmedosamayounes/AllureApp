@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../core/theming/colors.dart';
 
 class AuthHeader extends StatelessWidget {
   final String name;

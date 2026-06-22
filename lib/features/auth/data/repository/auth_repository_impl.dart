@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../core/firbase_networking/api_error_handler.dart';
 import '../../../../core/firbase_networking/api_result.dart';
+import '../../../../core/firbase_networking/firebase_error_handler.dart';
 import '../../domain/entity/user_entity.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../remote_data/auth_remote_data_source.dart';

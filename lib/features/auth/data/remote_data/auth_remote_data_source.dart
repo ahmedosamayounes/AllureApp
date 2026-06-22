@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../domain/entity/user_entity.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../domain/entity/user_entity.dart';
 
 abstract class AuthRemoteDataSource {
   Future<UserEntity> login({required String email, required String password});

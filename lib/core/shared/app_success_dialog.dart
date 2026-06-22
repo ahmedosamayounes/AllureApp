@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -8,7 +10,11 @@ import '../routing/routes.dart';
 import '../theming/colors.dart';
 
 class AppSuccessDialog extends StatelessWidget {
-  const AppSuccessDialog({super.key});
+  final String orderId;
+  const AppSuccessDialog({
+    super.key, 
+    required this.orderId, 
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +34,7 @@ class AppSuccessDialog extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
+                context.read<CheckoutCubit>().resetCheckout(); 
                 Navigator.pop(context);
               },
               child: const Align(
@@ -77,7 +84,7 @@ class AppSuccessDialog extends StatelessWidget {
                 ),
                 Gap(6.w),
                 Text(
-                  '15263541',
+                  orderId, 
                   style: TextStyle(
                     fontFamily: "TenorSans",
                     fontSize: 14.sp,
@@ -124,9 +131,11 @@ class AppSuccessDialog extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacementNamed(
+                      context.read<CheckoutCubit>().resetCheckout();
+                      Navigator.pushNamedAndRemoveUntil(
                         context,
                         Routes.homeScreen,
+                        (route) => false,
                       );
                     },
                     child: Container(
@@ -143,7 +152,7 @@ class AppSuccessDialog extends StatelessWidget {
                             fontFamily: "TenorSans",
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
-                          ),
+                      ),
                         ),
                       ),
                     ),
@@ -153,6 +162,7 @@ class AppSuccessDialog extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
+                      context.read<CheckoutCubit>().resetCheckout();
                       Navigator.pop(context);
                     },
                     child: Container(

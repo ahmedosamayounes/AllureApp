@@ -19,11 +19,13 @@ dependencies:
   firebase_app_check: ^0.4.3
   firebase_auth: ^6.4.0
   firebase_core: ^4.7.0
+  firebase_messaging: ^16.4.1
   firebase_storage: ^13.3.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
-  flutter_credit_card: ^4.1.0
+  flutter_local_notifications: ^22.0.1
+  flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
   flutter_stripe: ^13.0.0
   flutter_svg: ^2.2.2
@@ -40,9 +42,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.14.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
-
   uses-material-design: true
 
   assets:
@@ -54,4 +56,10 @@ flutter:
   fonts:
     - family: "TenorSans"
       fonts:
-        - asset: assets\fonts\Tenor_Sans\TenorSans-Regular.ttf
+        - asset: assets/fonts/Tenor_Sans/TenorSans-Regular.ttf
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/homePhoto/icon.png"
+  min_sdk_android: 21

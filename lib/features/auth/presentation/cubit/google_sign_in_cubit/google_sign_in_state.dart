@@ -1,5 +1,7 @@
-import '../../../domain/entity/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../domain/entity/user_entity.dart';
+
 part 'google_sign_in_state.freezed.dart';
 @freezed
 class GoogleSignInState with _$GoogleSignInState {

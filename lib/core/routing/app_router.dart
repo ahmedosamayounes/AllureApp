@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/core/di/dependency_injection.dart';
-import 'package:flutter_application/core/routing/routes.dart';
-import 'package:flutter_application/features/auth/data/auth_get.dart';
-import 'package:flutter_application/features/auth/presentation/cubit/google_sign_in_cubit/google_sign_in_cubit.dart';
-import 'package:flutter_application/features/auth/presentation/cubit/login_cubit/login_cubit.dart';
-import 'package:flutter_application/features/auth/presentation/cubit/sign_up_cubit/signup_cubit.dart';
+import '../../features/checkout/presentation/screens/place_order_screen.dart';
+import '../di/dependency_injection.dart';
+import 'routes.dart';
+import '../../features/auth/presentation/screens/auth_get.dart';
+import '../../features/auth/presentation/cubit/google_sign_in_cubit/google_sign_in_cubit.dart';
+import '../../features/auth/presentation/cubit/login_cubit/login_cubit.dart';
+import '../../features/auth/presentation/cubit/sign_up_cubit/signup_cubit.dart';
 
-import 'package:flutter_application/features/auth/presentation/screens/login/login_screen.dart';
-import 'package:flutter_application/features/auth/presentation/screens/signup/signup_screen.dart';
-import 'package:flutter_application/features/checkout/logic/cubit/checkout_cubit.dart';
-import 'package:flutter_application/features/checkout/ui/checkout.dart';
-import 'package:flutter_application/features/home/data/models/product_model.dart';
-import 'package:flutter_application/features/home/data/networking/home_service.dart';
-import 'package:flutter_application/features/home/data/repo/home_repo.dart';
-import 'package:flutter_application/features/home/logic/cubit/home_cubit.dart';
-import 'package:flutter_application/features/home/ui/home.dart';
-import 'package:flutter_application/features/place_order/ui/placeorder.dart';
+import '../../features/auth/presentation/screens/login/login_screen.dart';
+import '../../features/auth/presentation/screens/signup/signup_screen.dart';
+import '../../features/checkout/presentation/cubit/checkout_cubit.dart';
+import '../../features/checkout/presentation/screens/checkout_screen.dart';
+import '../../features/home/data/models/product_model.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
-    //s
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -44,8 +41,8 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (_) => HomeCubit(HomeRepo(HomeService()))..getProducts(),
-            child: const Home(),
+            create: (_) => getIt<HomeCubit>()..getProducts(),
+            child: const HomeScreen(),
           ),
         );
 
@@ -53,8 +50,8 @@ class AppRouter {
         final product = settings.arguments as ProductModel;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => CheckoutCubit(),
-            child: Checkout(product: product),
+            create: (context) => getIt<CheckoutCubit>(),
+            child: CheckoutScreen(product: product),
           ),
         );
 
@@ -65,7 +62,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: checkoutCubit,
-            child: PlaceOrder(product: product),
+            child: PlaceOrderScreen(product: product),
           ),
         );
 

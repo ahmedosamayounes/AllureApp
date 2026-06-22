@@ -1,29 +1,38 @@
+import '../../domain/repository/home_repository.dart';
+
 import '../models/product_model.dart';
-import '../networking/home_service.dart';
+import '../remote_data/home_remote_data_source.dart';
 
-class HomeRepo {
-  final HomeService _homeService;
-  HomeRepo(this._homeService);
+class HomeRepositoryImpl implements HomeRepository {
+  final HomeRemoteDataSource _remoteDataSource;
+  HomeRepositoryImpl(this._remoteDataSource);
 
+  @override
   Stream<List<ProductModel>> getProducts() {
-    return _homeService.getProducts().asyncMap((snapshot) async {
-      List<ProductModel> products = [];
+    return _remoteDataSource.getProductsStream().asyncMap((snapshot) async {
+      List<ProductModel> productsList = [];
 
       for (var doc in snapshot.docs) {
-        var product = ProductModel.fromJson(doc.data() as Map<String, dynamic>);
+        //Casting
+        final data = doc.data() as Map<String, dynamic>?;
+        if (data == null) continue; 
+        //Object
+        var product = ProductModel.fromJson(data);
 
         if (product.image != null && product.image!.isNotEmpty) {
           try {
-            String url = await _homeService.getImageUrl(product.image!);
-            product.imageUrl = url; //put the URL in the model
+            // convert the path (Firestore) to url (FireStorge)
+            String url = await _remoteDataSource.getImageUrl(product.image!);
+            product.imageUrl = url;
           } catch (e) {
             product.imageUrl = '';
           }
         }
-        products.add(product);
+        
+        productsList.add(product);
       }
-
-      return products;
+      
+      return productsList;
     });
   }
 }

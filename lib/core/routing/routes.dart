@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class Routes {
   static const String authGate = '/authGate';
   static const String loginScreen = '/login_screen';

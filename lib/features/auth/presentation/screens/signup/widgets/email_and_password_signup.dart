@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/helpers/app_regex.dart';
-import '../../../cubit/sign_up_cubit/signup_cubit.dart';
-import '../../../widgets/auth_text_form_filed.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../../../core/helpers/app_regex.dart';
+import '../../../cubit/sign_up_cubit/signup_cubit.dart';
+import '../../../widgets/auth_text_form_filed.dart';
 import 'paswword_validations.dart';
 
 class EmailAndPasswordSignup extends StatefulWidget {

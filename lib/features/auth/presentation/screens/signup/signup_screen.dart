@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../cubit/sign_up_cubit/signup_cubit.dart';
-import '../../widgets/auth_button.dart';
-import '../../widgets/auth_header.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../cubit/sign_up_cubit/signup_cubit.dart';
+import '../../widgets/auth_button.dart';
+import '../../widgets/auth_header.dart';
 import 'widgets/already_have_account.dart';
 import 'widgets/email_and_password_signup.dart';
 import 'widgets/sign_up_bloc_listener.dart';

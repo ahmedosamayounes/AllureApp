@@ -57,7 +57,6 @@ class _CustomproductState extends State<AppProductCard> {
           ),
           Gap(16.w),
 
-          // تفاصيل المنتج
           Expanded(
             child: SizedBox(
               height: 130.h,

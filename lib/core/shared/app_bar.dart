@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
+import '../../features/home/presentation/cubit/home_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-
 import '../theming/colors.dart';
 
-class Customappbar extends StatelessWidget implements PreferredSizeWidget {
+class Customappbar extends StatefulWidget implements PreferredSizeWidget {
   const Customappbar({super.key, required this.isblack, this.isHome = false});
 
   final bool isblack;
   final bool isHome;
 
   @override
+  State<Customappbar> createState() => _CustomappbarState();
+
+  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomappbarState extends State<Customappbar> {
+  bool isSearching = false;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    bool isblackk = isblack;
-
-    bool showBackButton = Navigator.canPop(context) && !isHome;
+    bool isblackk = widget.isblack;
+    bool showBackButton = Navigator.canPop(context) && !widget.isHome;
 
     return Padding(
       padding: EdgeInsets.all(12.0.w),
@@ -28,36 +42,82 @@ class Customappbar extends StatelessWidget implements PreferredSizeWidget {
 
         leading: GestureDetector(
           onTap: () {
-            if (showBackButton) {
-              Navigator.pop(context);
+            if (isSearching) {
+              setState(() {
+                isSearching = false;
+                _searchController.clear();
+                context.read<HomeCubit>().searchProducts('');
+              });
             } else {
-              Scaffold.of(context).openDrawer();
+              if (showBackButton) {
+                Navigator.pop(context);
+              } else {
+                Scaffold.of(context).openDrawer();
+              }
             }
           },
-          child: showBackButton
+          child: isSearching
               ? Icon(
-                  Icons.arrow_back_ios_new_rounded,
+                  Icons.close,
                   color: isblackk ? Colors.white : Colors.black,
-                  size: 22.sp,
+                  size: 24.sp,
                 )
-              : SvgPicture.asset(
-                  'assets/images/icons/Menu.svg',
-                  color: isblackk ? Colors.white : Colors.black,
-                  height: 30.h,
-                ),
+              : (showBackButton
+                    ? Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: isblackk ? Colors.white : Colors.black,
+                        size: 22.sp,
+                      )
+                    : SvgPicture.asset(
+                        'assets/images/icons/Menu.svg',
+                        color: isblackk ? Colors.white : Colors.black,
+                        height: 30.h,
+                      )),
         ),
 
         leadingWidth: 25.w,
         centerTitle: true,
-        title: SvgPicture.asset(
-          'assets/images/homePhoto/Group 10285.svg',
-          width: 50.w,
-          color: isblackk ? Colors.white : Colors.black,
-        ),
+
+        title: isSearching
+            ? TextField(
+                controller: _searchController,
+                autofocus: true,
+                style: TextStyle(
+                  color: isblackk ? Colors.white : Colors.black,
+                  fontSize: 16.sp,
+                ),
+                decoration: InputDecoration(
+                  hintText: 'Search products...',
+                  hintStyle: TextStyle(
+                    color: isblackk ? Colors.white60 : Colors.black45,
+                  ),
+                  border: InputBorder.none,
+                ),
+                onChanged: (query) {
+                  context.read<HomeCubit>().searchProducts(query);
+                },
+              )
+            : SvgPicture.asset(
+                'assets/images/homePhoto/Group 10285.svg',
+                width: 50.w,
+                color: isblackk ? Colors.white : Colors.black,
+              ),
+
         actions: [
-          SvgPicture.asset(
-            'assets/images/icons/Search.svg',
-            color: isblackk ? Colors.white : Colors.black,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isSearching = !isSearching;
+                if (!isSearching) {
+                  _searchController.clear();
+                  context.read<HomeCubit>().searchProducts('');
+                }
+              });
+            },
+            child: SvgPicture.asset(
+              'assets/images/icons/Search.svg',
+              color: isblackk ? Colors.white : Colors.black,
+            ),
           ),
           Gap(15.0.w),
           GestureDetector(
