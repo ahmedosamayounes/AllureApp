@@ -32,7 +32,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     );
   }
 
-  // 🔥 1. دالة الـ Reset اللي كانت ناقصانا عشان ننظف الداتا بعد النجاح
   void resetCheckout() {
     quantity = 1;
     basePrice = 0;
@@ -41,12 +40,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     emit(const CheckoutState.initial());
   }
 
-  // الدالة دي لو لسة بتستخدمها للتست، خليها ترجع أي ID عشوائي
   Future<void> placeOrder() async {
     emit(const CheckoutState.placeOrderLoading());
     try {
       await Future.delayed(const Duration(seconds: 2));
-      emit(const CheckoutState.placeOrderSuccess(orderId: 'TEST-12345')); // 👈 ضفنا ID تجريبي
+      emit(const CheckoutState.placeOrderSuccess(orderId: 'TEST-12345'));
     } catch (e) {
       emit(CheckoutState.placeOrderError(message: e.toString()));
     }
@@ -69,7 +67,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       );
 
       if (!isClosed) {
-        emit(CheckoutState.placeOrderSuccess(orderId: generatedOrderId)); // 👈 باصي الـ ID للـ State
+        emit(CheckoutState.placeOrderSuccess(orderId: generatedOrderId)); 
       }
     } catch (e) {
       emit(CheckoutState.placeOrderError(message: e.toString()));

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/features/checkout/presentation/widgets/checkout_widgets/checkout_total_price_bloc_builder.dart';
 import '../widgets/checkout_widgets/checkout_button_bloc_builder.dart';
 import '../widgets/checkout_widgets/checkout_product_card_bloc_builder.dart';
 import '../widgets/checkout_widgets/delivery_section.dart';
 import '../widgets/checkout_widgets/promo_code_section.dart';
-import '../widgets/checkout_total_price_bloc_builder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/routing/routes.dart';
 import '../cubit/checkout_cubit.dart';

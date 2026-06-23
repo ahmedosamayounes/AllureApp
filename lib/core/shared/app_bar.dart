@@ -63,22 +63,22 @@ class _CustomappbarState extends State<Customappbar> {
                   size: 24.sp,
                 )
               : (showBackButton
-                    ? Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: isblackk ? Colors.white : Colors.black,
-                        size: 22.sp,
-                      )
-                    : SvgPicture.asset(
-                        'assets/images/icons/Menu.svg',
-                        color: isblackk ? Colors.white : Colors.black,
-                        height: 30.h,
-                      )),
+                  ? Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: isblackk ? Colors.white : Colors.black,
+                      size: 22.sp,
+                    )
+                  : SvgPicture.asset(
+                      'assets/images/icons/Menu.svg',
+                      color: isblackk ? Colors.white : Colors.black,
+                      height: 30.h,
+                    )),
         ),
 
         leadingWidth: 25.w,
         centerTitle: true,
 
-        title: isSearching
+        title: (widget.isHome && isSearching)
             ? TextField(
                 controller: _searchController,
                 autofocus: true,
@@ -104,29 +104,31 @@ class _CustomappbarState extends State<Customappbar> {
               ),
 
         actions: [
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isSearching = !isSearching;
-                if (!isSearching) {
-                  _searchController.clear();
-                  context.read<HomeCubit>().searchProducts('');
-                }
-              });
-            },
-            child: SvgPicture.asset(
-              'assets/images/icons/Search.svg',
-              color: isblackk ? Colors.white : Colors.black,
+          if (widget.isHome) ...[
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isSearching = !isSearching;
+                  if (!isSearching) {
+                    _searchController.clear();
+                    context.read<HomeCubit>().searchProducts('');
+                  }
+                });
+              },
+              child: SvgPicture.asset(
+                'assets/images/icons/Search.svg',
+                color: isblackk ? Colors.white : Colors.black,
+              ),
             ),
-          ),
-          Gap(15.0.w),
-          GestureDetector(
-            onTap: () {},
-            child: SvgPicture.asset(
-              'assets/images/icons/shopping bag.svg',
-              color: isblackk ? Colors.white : Colors.black,
+            Gap(15.0.w),
+            GestureDetector(
+              onTap: () {},
+              child: SvgPicture.asset(
+                'assets/images/icons/shopping bag.svg',
+                color: isblackk ? Colors.white : Colors.black,
+              ),
             ),
-          ),
+          ],
         ],
       ),
     );

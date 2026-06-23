@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_application/features/home/data/local_data/home_local_data_source.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -41,9 +42,13 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(getIt<FirebaseAuth>(), getIt<GoogleSignIn>()),
   );
-  // Home 
+  // Home (remote) 
   getIt.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(getIt<FirebaseFirestore>(), getIt<FirebaseStorage>()),
+  );
+   // home (local)
+  getIt.registerLazySingleton<HomeLocalDataSource>(
+    () => HomeLocalDataSourceImpl(),
   );
   // Checkout
   getIt.registerLazySingleton<CheckoutRemoteDataSource>(
@@ -59,8 +64,8 @@ Future<void> setupGetIt() async {
     () => AuthRepositoryImpl(getIt<AuthRemoteDataSource>()),
   );
   // Home 
-  getIt.registerLazySingleton<HomeRepository>(
-    () => HomeRepositoryImpl(getIt<HomeRemoteDataSource>()),
+getIt.registerLazySingleton<HomeRepository>(
+    () => HomeRepositoryImpl(getIt<HomeRemoteDataSource>(), getIt<HomeLocalDataSource>()),
   );
   // Checkout
   getIt.registerLazySingleton<CheckoutRepository>(
